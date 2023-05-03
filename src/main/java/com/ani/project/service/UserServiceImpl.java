@@ -1,39 +1,50 @@
 package com.ani.project.service;
 
-import java.util.Optional;
-
+import com.ani.project.exception.UserNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.ani.project.domain.User;
+import com.ani.project.dto.LoginDto;
+import com.ani.project.dto.RegisterDto;
 import com.ani.project.dto.UserDto;
-import com.ani.project.exception.InvalidInputException;
 import com.ani.project.repository.UserRepository;
-import com.ani.project.util.UserMapper;
+
 
 import lombok.AllArgsConstructor;
 
-@Service
-@Transactional
+
 @AllArgsConstructor
-public class UserServiceImpl implements UserService{
+@Service
+public class UserServiceImpl implements UserService {
 
-    private final UserRepository repository;
-    private final UserMapper mapper;
-  
+    private UserRepository userRepository;
 
     @Override
-    public UserDto loginUser(String email, String password) {
-        Optional<User> user=repository.findByEmailAndPassword(email, password);
-        return mapper.toDto(user.orElseThrow(()-> new UserNotFoundException("User not found")) );
-        
-    }
-    @Override
-    public Integer createUser(UserDto dto) {
-        // TODO Auto-generated method stub
-        repository.save(mapper.toDomain(dto));
-        return 1;
+    public UserDto register(RegisterDto registerDto) {
+        User user = new User();
+        user.setName(registerDto.getName());
+        user.setEmail(registerDto.getEmail());
+        user.setPassword(registerDto.getPassword());
+        user.setRole(registerDto.getRole());
+        userRepository.save(user);
+        return convertToDto(user);
     }
 
-  
+    @Override
+    public UserDto login(LoginDto loginDto) throws UserNotFoundException{
+        User user = userRepository.findByEmailAndPassword(loginDto.getEmail(), loginDto.getPassword());
+        if (user == null) {
+            throw new UserNotFoundException("Invalid email or password");
+        }
+        return convertToDto(user);
+
+    }
+
+    private UserDto convertToDto(User user) {
+        UserDto userDto = new UserDto();
+        userDto.setId(user.getId());
+        userDto.setName(user.getName());
+        userDto.setEmail(user.getEmail());
+        userDto.setRole(user.getRole());
+        return userDto;
+    }
 }

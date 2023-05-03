@@ -1,5 +1,6 @@
 package com.ani.project.domain;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,13 +11,12 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Builder
+
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
@@ -31,22 +31,23 @@ public class User {
     private long id;
 
     @NotBlank
-    @Column(name="name")
+    @Column(name="name", unique = true, nullable = false)
     private String name;
 
     @NotBlank
     @Email
-    @Column(name="email", unique=true)
+    @Column(name="email", unique=true, nullable = false)
     private String email;
 
     @NotBlank
     @Size(min=6)
-    @Column(name="password", unique=true)
+    @Column(name="password", unique=true, nullable = false)
     private String password;
 
     @NotBlank
-    @Column(name="role")
+    @Column(name="role", nullable = false)
     private String role;
+    
 }
 
 

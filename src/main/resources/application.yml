@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/projectdb
+    username: root
+    password: therese123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+# below are optional properties
+# you may neglect, it is just for logging purpose
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+       hibernate.format_sql: true

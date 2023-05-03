@@ -1,5 +1,6 @@
 package com.ani.project.controller;
 
+
 import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
@@ -9,12 +10,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ani.project.dto.AppResponse;
+import com.ani.project.dto.LoginDto;
+import com.ani.project.dto.RegisterDto;
 import com.ani.project.dto.UserDto;
 import com.ani.project.service.UserService;
+
 
 import lombok.AllArgsConstructor;
 
@@ -25,31 +27,22 @@ import lombok.AllArgsConstructor;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-    private final UserService service;
 
+    private UserService userService;
 
-    @PostMapping(value="/register", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<Integer>> create(@Valid @RequestBody UserDto dto) {
-        final Integer sts= service.createUser(dto);
-        AppResponse<Integer> response = AppResponse.<Integer>builder()
-                .sts("Success")
-                .msg("User created successfully")
-                .bd(sts)
-                .build();
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    @PostMapping(value="/register", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE) 
+    public ResponseEntity<UserDto> register(@Valid @RequestBody RegisterDto registerDto) {
+        UserDto userDto = userService.register(registerDto);
+        return new ResponseEntity<>(userDto, HttpStatus.CREATED);
     }
 
-    @PostMapping(value="/login", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<UserDto>> login(@RequestParam String email, @RequestParam String password) {
-        UserDto user = service.loginUser(email, password);
-        AppResponse<UserDto> response = AppResponse.<UserDto>builder()
-                .sts("Success")
-                .msg("User logged in successfully")
-                .bd(user)
-                .build();
-        return ResponseEntity.ok().body(response);
+    @PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<UserDto> login(@Valid @RequestBody LoginDto loginDto) {
+        UserDto userDto = userService.login(loginDto);
+        return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 }
+
 
 
 

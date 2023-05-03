@@ -5,6 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,12 +29,24 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
     private long id;
+
+    @NotBlank
     @Column(name="name")
     private String name;
-    @Column(name="email")
+
+    @NotBlank
+    @Email
+    @Column(name="email", unique=true)
     private String email;
-    @Column(name="password")
+
+    @NotBlank
+    @Size(min=6)
+    @Column(name="password", unique=true)
     private String password;
+
+    @NotBlank
+    @Column(name="role")
+    private String role;
 }
 
 

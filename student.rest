@@ -1,0 +1,27 @@
+### Create New Student
+POST http://localhost:8080/student/ HTTP/1.1 
+content-type: application/json
+
+{
+"id" : 2, "name" : "vguk", "email" : "vguk@gmail.com"
+}
+
+### Get all Student
+GET  http://localhost:8080/student/ HTTP/1.1 
+
+
+### Delete Student By Id 
+DELETE http://localhost:8080/student/1
+
+### Student By Id 
+GET http://localhost:8080/student/2
+
+
+### Update Student
+
+PUT http://localhost:8080/student/ HTTP/1.1 
+content-type: application/json
+
+{
+"id" : 2, "name" : "dbjd", "email" : "vguk@gmail.com"
+}

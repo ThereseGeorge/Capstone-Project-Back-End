@@ -1,6 +1,6 @@
 package com.ani.project.service;
 
-import com.ani.project.exception.UserNotFoundException;
+
 import org.springframework.stereotype.Service;
 import com.ani.project.domain.User;
 import com.ani.project.dto.LoginDto;
@@ -13,7 +13,7 @@ import lombok.AllArgsConstructor;
 
 
 @AllArgsConstructor
-@Service
+@Serviceimport com.ani.project.exception.UserNotFoundException;
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;

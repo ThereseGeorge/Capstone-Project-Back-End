@@ -1,10 +1,11 @@
 package com.ani.project.util;
 
+import org.springframework.stereotype.Component;
+
 import com.ani.project.domain.Student;
 import com.ani.project.dto.StudentDto;
 
-import lombok.AllArgsConstructor;
-import lombok.ToString;
+
 
 @Component
 public class StudentMapper {

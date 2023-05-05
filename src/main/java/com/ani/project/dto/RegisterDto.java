@@ -35,6 +35,6 @@ public class RegisterDto {
     @NotNull(message = "Name cannot be blank")
     private String role;
 
-    // Constructors, getters, and setters
+    
 }
 

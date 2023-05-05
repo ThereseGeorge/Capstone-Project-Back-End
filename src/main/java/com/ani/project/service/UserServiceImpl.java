@@ -1,19 +1,21 @@
 package com.ani.project.service;
 
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 import com.ani.project.domain.User;
 import com.ani.project.dto.LoginDto;
 import com.ani.project.dto.RegisterDto;
 import com.ani.project.dto.UserDto;
 import com.ani.project.repository.UserRepository;
-
+import com.ani.project.exception.UserNotFoundException;
 
 import lombok.AllArgsConstructor;
 
-
+@Transactional
 @AllArgsConstructor
-@Serviceimport com.ani.project.exception.UserNotFoundException;
+@Service
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;

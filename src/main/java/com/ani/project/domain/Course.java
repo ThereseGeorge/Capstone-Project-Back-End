@@ -27,13 +27,23 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
     private long id;
-    @Column(name="course_name")
+
+    @Column(name="course_name", nullable = false)
     private String courseName;
-    @Column(name="faculty_name")
+
+    @Column(name="faculty_name", nullable = false)
     private String facultyName;
+
     @Column(name="start_date")
     private LocalDate startDate;
-    @Column(name="end_Date")
+
+    @Column(name="end_Date"  )
     private LocalDate endDate;
+
+    @Column(name="material" )
+    private String material;
+
+    @Column(name="recording" )
+    private String recording;
     
 }

@@ -1,0 +1,27 @@
+### Create New Course
+POST http://localhost:8080/course/ HTTP/1.1 
+content-type: application/json
+
+{
+"id" : 2, "courseName" : "hijlkl", "facultyName" : "ajjej" , "startDate" : "2023-08-12", "endDate" :"2023-10-04", "material" : "https://www.w3schools.com/js/", "recording" : "https://meet.google.com/woi-gjix-jsx"
+}
+
+### Get all Student
+GET  http://localhost:8080/course/ HTTP/1.1 
+
+
+### Delete Student By Id 
+DELETE http://localhost:8080/course/1
+
+### Get Student By Id 
+GET http://localhost:8080/course/2
+
+
+### Update Student
+
+PUT http://localhost:8080/course/ HTTP/1.1 
+content-type: application/json
+
+{
+    "id" : 2, "courseName" : "vguk", "facultyName" : "qwerty" , "startDate" : "2023-04-10", "endDate" :"2023-06-05", "material" : "https://www.w3schools.com/js/", "recording" : "https://meet.google.com/woi-gjix-jsx"
+}

@@ -3,7 +3,7 @@ POST http://localhost:8080/users/login HTTP/1.1
 content-type: application/json
 
 {
-    "email" : "fry@gmail.com", "password": "ttydgky"
+    "email" : "abcdefg@gmail.com", "password": "abcdeg"
 }
 
 ### Register 
@@ -11,6 +11,8 @@ POST  http://localhost:8080/users/register HTTP/1.1
 content-type: application/json
 
 {
-    "name" :"gfjk", "email" : "fry@gmail.com", "password": "ttydgky", "role":"faculty"
+    
+     "name" :"abcdefg", "email" : "abcdefg@gmail.com", "password": "abcdeg", "role":"faculty"
+    
 }
 

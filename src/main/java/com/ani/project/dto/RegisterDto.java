@@ -1,16 +1,18 @@
 package com.ani.project.dto;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
+
+
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegisterDto {
@@ -22,17 +24,19 @@ public class RegisterDto {
 
     @NotEmpty(message = "Email cannot be empty")
     @NotNull(message = "Email cannot be null")
-    @NotNull(message = "Email cannot be blank")
+    @NotBlank(message = "Email cannot be blank")
+    @Email(message="Invalid email")
     private String email;
 
     @NotEmpty(message = "Password cannot be empty")
     @NotNull(message = "Password cannot be null")
-    @NotNull(message = "Password cannot be blank")
+    @NotBlank(message = "Password cannot be blank")
+    @Size(min=6, message="Password should be atleast of length 6")
     private String password;
 
-    @NotEmpty(message = " cannot be empty")
-    @NotNull(message = "Name cannot be null")
-    @NotNull(message = "Name cannot be blank")
+   
+    @NotNull(message = "Role cannot be null")
+    @NotBlank(message = "Role is mandatory")
     private String role;
 
     

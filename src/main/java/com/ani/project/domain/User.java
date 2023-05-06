@@ -11,17 +11,14 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+
 
 
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@Setter
-@Getter
+@Data
 @Entity
 public class User {
 

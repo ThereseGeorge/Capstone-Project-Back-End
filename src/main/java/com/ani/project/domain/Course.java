@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.URL;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -41,9 +43,11 @@ public class Course {
     private LocalDate endDate;
 
     @Column(name="material" )
+    @URL(message="Invalid URL")
     private String material;
 
     @Column(name="recording" )
+    @URL(message="Invalid URL")
     private String recording;
     
 }

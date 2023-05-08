@@ -3,25 +3,28 @@ POST http://localhost:8080/course/ HTTP/1.1
 content-type: application/json
 
 {
-"id" : 2, "courseName" : "hijlkl", "facultyName" : "ajjej" , "startDate" : "2023-08-12", "endDate" :"2023-10-04", "material" : "https://www.w3schools.com/js/", "recording" : "https://meet.google.com/woi-gjix-jsx"
+"id" : 3, "courseName" : "gjdidld", "facultyName" : "vjnjkk" , "startDate" : "2023-08-12", "endDate" :"2023-10-04", "material" : "https://www.w3schools.com/js/", "recording" : "https://meet.google.com/woi-gjix-jsx"
 }
 
-### Get all Student
+### Get all Course
 GET  http://localhost:8080/course/ HTTP/1.1 
 
 
-### Delete Student By Id 
+### Delete Course By Id 
 DELETE http://localhost:8080/course/1
 
-### Get Student By Id 
-GET http://localhost:8080/course/2
+### Get Course By Id 
+GET http://localhost:8080/course/19
 
 
-### Update Student
+### Update Course
 
 PUT http://localhost:8080/course/ HTTP/1.1 
 content-type: application/json
 
 {
-    "id" : 2, "courseName" : "vguk", "facultyName" : "qwerty" , "startDate" : "2023-04-10", "endDate" :"2023-06-05", "material" : "https://www.w3schools.com/js/", "recording" : "https://meet.google.com/woi-gjix-jsx"
+    "id": 3,  "courseName" : "music", "facultyName" : "jasmine" , "startDate" : "2023-04-10", "endDate" :"2023-06-05", "material" : "https://www.w3schools.com/js/", "recording" : "https://meet.google.com/woi-gjix-jsx"
 }
+
+### Get Course By Name 
+GET http://localhost:8080/course/name?courseName=dvheg

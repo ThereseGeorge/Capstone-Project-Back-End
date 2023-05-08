@@ -58,10 +58,36 @@ public class CourseServiceImpl implements CourseService{
     @Override
     public Integer updateCourse(CourseDto dto) {
         // TODO Auto-generated method stub
-        repository.save(mapper.toDomain(dto));
+        Long id= dto.getId();
+        Course course= repository.findById(id).orElseThrow(() -> new CourseNotFoundException("Course not found"));
+        course.setCourseName(dto.getCourseName());
+        course.setFacultyName(dto.getFacultyName());
+        course.setStartDate(dto.getStartDate());
+        course.setEndDate(dto.getEndDate());
+        course.setMaterial(dto.getMaterial());
+        course.setRecording(dto.getRecording());
+        repository.save(course);
+
+    
         return 1;
     }
-    
+
+
+    @Override
+    public List<CourseDto> getCoursesByCourseName(String courseName) throws CourseNotFoundException {
+        // TODO Auto-generated method stub
+        //List<Course> courses = repository.findByCourseName(courseName);
+        
+        List<CourseDto> collect = repository.findAllByCourseName(courseName).stream().map(mapper :: toDto).collect(Collectors.toList());
+        
+        if(collect.isEmpty()) throw new CourseNotFoundException("No courses found");
+        return collect;
+
+        //return repository.findByCourseName(courseName).stream().map(mapper :: toDto).collect(Collectors.toList());
+        
+    }
+
+   
 }
 
 

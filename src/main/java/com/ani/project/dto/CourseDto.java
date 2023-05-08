@@ -8,6 +8,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.URL;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -42,9 +44,11 @@ public class CourseDto {
     private LocalDate endDate;
 
     @Pattern(regexp = "^https?://\\S+$", message = "Invalid material link format")
+    @URL(message="Invalid URL")
     private String material;
 
     @Pattern(regexp = "^https?://\\S+$", message = "Invalid material link format")
+    @URL(message="Invalid URL")
     private String recording;
 
     @AssertTrue(message = "End date must be after start date")

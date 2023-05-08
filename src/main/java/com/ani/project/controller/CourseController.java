@@ -2,6 +2,8 @@ package com.ani.project.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ani.project.dto.AppResponse;
@@ -30,7 +33,7 @@ public class CourseController {
 
     @CrossOrigin
     @PostMapping(value="/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<Integer>> createNewCourse(@RequestBody CourseDto dto){
+    public ResponseEntity<AppResponse<Integer>> createNewCourse(@Valid @RequestBody CourseDto dto){
         final Integer sts = service.createNewCourse(dto);
         final AppResponse<Integer> response = AppResponse.<Integer>builder().sts("success").msg("Course Added Successfully").bd(sts).build();
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
@@ -63,13 +66,19 @@ public class CourseController {
 
     @CrossOrigin
     @PutMapping(value="/", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<AppResponse<Integer>> updateNewCourse(@RequestBody CourseDto dto){
+    public ResponseEntity<AppResponse<Integer>> updateNewCourse(@Valid @RequestBody CourseDto dto){
         final Integer sts = service.updateCourse(dto);
         final AppResponse<Integer> response = AppResponse.<Integer>builder().sts("success").msg("Course Updated Successfully").bd(sts).build();
         return ResponseEntity.ok().body(response);
 
     }
 
+    @GetMapping(value = "/name", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AppResponse<List<CourseDto>>> getCoursesByCourseName(@RequestParam String courseName) {
+        List<CourseDto> courses = service.getCoursesByCourseName(courseName);
+        AppResponse<List<CourseDto>> response = AppResponse.<List<CourseDto>>builder().sts("success").msg("All Courses").bd(courses).build();
+        return ResponseEntity.status(200).body(response);
+    }
 
     
     

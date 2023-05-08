@@ -10,5 +10,6 @@ public interface CourseService {
     List<CourseDto> all();
     Integer deleteCourse(Long id) throws CourseNotFoundException;
     CourseDto fetchCourseDetails(Long id) throws CourseNotFoundException;
-    Integer updateCourse(CourseDto dto);
+    Integer updateCourse(CourseDto course);
+    List<CourseDto> getCoursesByCourseName(String courseName) throws CourseNotFoundException;
 }

@@ -20,15 +20,18 @@ import lombok.ToString;
 @Setter
 @Getter
 @Entity
-public class QuestionAnswer {
+public class Mark {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
     private long id;
     @Column(name="name")
     private String name;
-    @Column(name="question")
-    private String question;
-    @Column(name="answer")
-    private String answer;
+    @Column(name="marks")
+    private long marks;
+    @Column(name="grade")
+    private String grade;
+    @Column(name="feedback")
+    private String feedback;
+    
 }

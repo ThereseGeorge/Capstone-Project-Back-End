@@ -25,14 +25,14 @@ public class CourseDto {
     
     private Long id;
 
-    @NotEmpty(message="Course name cannot be null")
+    @NotEmpty(message="Course name cannot be empty")
     @NotNull(message="Course name cannot be null")
-    @NotBlank(message="Course name cannot be null")
+    @NotBlank(message="Course name cannot be blank")
     private String courseName;
 
-    @NotEmpty(message="Faculty name cannot be null")
+    @NotEmpty(message="Faculty name cannot be empty")
     @NotNull(message="Faculty name cannot be null")
-    @NotBlank(message="Faculty name cannot be null")
+    @NotBlank(message="Faculty name cannot be blank")
     private String facultyName;
 
    

@@ -1,0 +1,43 @@
+### Create New Question
+POST http://localhost:8080/questions/ HTTP/1.1 
+content-type: application/json
+
+{
+"id" : 4, "studentName" : "ghgf", "question" : "vgijgmailcom"
+}
+
+
+### Get Question by Id
+GET http://localhost:8080/questions/2
+
+
+### Get all Questions
+GET  http://localhost:8080/questions HTTP/1.1 
+
+
+### Create New Answer
+POST http://localhost:8080/questions/answer/2
+content-type: application/json
+
+{
+   "answer":   "asdfg"
+}
+
+
+### Update Answer
+
+PUT http://localhost:8080/questions/answer/2 HTTP/1.1 
+content-type: application/json
+
+{
+ "answer" : "abcdef"
+}
+
+
+
+### Delete Question By Id 
+DELETE http://localhost:8080/questions/answer/4
+
+
+cd C:\Users\HP\Desktop\Capstone-Project-Back-End\project-back-end
+

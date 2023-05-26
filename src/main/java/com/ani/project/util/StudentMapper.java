@@ -10,7 +10,7 @@ import com.ani.project.dto.StudentDto;
 @Component
 public class StudentMapper {
     public Student toDomain(StudentDto dto){
-        return Student.builder().id(dto.getId()).name(dto.getName()).email(dto.getEmail()).build();
+        return Student.builder().name(dto.getName()).email(dto.getEmail()).build();
 
     }
 
@@ -18,3 +18,5 @@ public class StudentMapper {
         return new StudentDto(domain.getId(), domain.getName(), domain.getEmail());
     }
 }
+
+

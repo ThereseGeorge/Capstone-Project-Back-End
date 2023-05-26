@@ -1,0 +1,27 @@
+### Create New Mark
+POST http://localhost:8080/mark/ HTTP/1.1 
+content-type: application/json
+
+{
+    "id" : 1, "name" : "abcdef", "marks" : "45 ", "grade" : "A", "feedback" : "fsdg asf efg dgg"
+}
+
+### Get all Marks
+GET  http://localhost:8080/mark/ HTTP/1.1 
+
+
+### Delete Mark By Id 
+DELETE http://localhost:8080/mark/71
+
+### Get Notification By Id 
+GET http://localhost:8080/mark/19
+
+
+### Update Notification
+
+PUT http://localhost:8080/mark/ HTTP/1.1 
+content-type: application/json
+
+{
+    "id" : 1, "name" : "qwerty", "marks" :"45 ", "grade" : "A", "feedback" : "fsdg asf efg dgg"
+}

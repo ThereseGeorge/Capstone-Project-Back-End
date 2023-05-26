@@ -59,6 +59,10 @@ public class StudentServiceImpl implements StudentService{
     @Override
     public Integer updateStudent(StudentDto dto) {
         // TODO Auto-generated method stub
+        Long id= dto.getId();
+        Student student= repository.findById(id).orElseThrow(() -> new StudentNotFoundException("Student not found"));
+        student.setName(dto.getName());
+        student.setEmail(dto.getEmail());
         repository.save(mapper.toDomain(dto));
         return 1;
     }

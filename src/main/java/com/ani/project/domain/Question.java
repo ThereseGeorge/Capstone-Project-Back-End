@@ -1,13 +1,14 @@
 package com.ani.project.domain;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,19 +23,23 @@ import lombok.ToString;
 @ToString
 @Setter
 @Getter
+
 @Entity
-public class ClassSchedule {
-    
+@Table(name = "questions")
+public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
-    private long id;
-    @Column(name="course_name")
-    private String courseName;
-    @Column(name="date")
-    private LocalDate date;
-    @Column(name="time")
-    private LocalTime time;
-    @Column(name="link")
-    private String link;
+    private Long id;
+
+    @Column(nullable = false)
+    private String studentName;
+
+    @Column(nullable = false)
+    private String question;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "answer_id")
+    private Answer answer;
+
+   
 }

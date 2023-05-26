@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,19 +20,16 @@ import lombok.ToString;
 @ToString
 @Setter
 @Getter
+
 @Entity
-public class MarkList {
+@Table(name = "answers")
+public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
-    private long id;
-    @Column(name="name")
-    private String name;
-    @Column(name="marks")
-    private long marks;
-    @Column(name="grade")
-    private String grade;
-    @Column(name="feedback")
-    private String feedback;
-    
+    private Long id;
+
+    @Column(nullable = false)
+    private String answer;
+
+   
 }

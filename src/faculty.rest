@@ -1,0 +1,27 @@
+### Create New Faculty
+POST http://localhost:8080/faculty/ HTTP/1.1 
+content-type: application/json
+
+{
+    "id" : 1, "name" : "gfdhh", "email" :"dgdzzjm@gmail.com "
+}
+
+### Get all Faculty
+GET  http://localhost:8080/faculty/ HTTP/1.1 
+
+
+### Delete Faculty By Id 
+DELETE http://localhost:8080/faculty/93
+
+### Get Faculty By Id 
+GET http://localhost:8080/faculty/92
+
+
+### Update Faculty
+
+PUT http://localhost:8080/faculty/ HTTP/1.1 
+content-type: application/json
+
+{
+    "id" : 92, "name" : "quak", "email" :"qwert@gmail.com "
+}

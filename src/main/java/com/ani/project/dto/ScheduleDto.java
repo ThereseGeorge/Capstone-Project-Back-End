@@ -44,4 +44,8 @@ public class ScheduleDto {
     @URL(message="Invalid URL")
     private String link;
 
+    @Pattern(regexp = "^https?://\\S+$", message = "Invalid recording link")
+    @URL(message="Invalid URL")
+    private String recording;
+
 }

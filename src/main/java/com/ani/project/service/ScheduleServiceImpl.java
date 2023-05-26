@@ -64,6 +64,7 @@ public class ScheduleServiceImpl implements ScheduleService{
         schedule.setDate(dto.getDate());
         schedule.setTime(dto.getTime());
         schedule.setLink(dto.getLink());
+        schedule.setRecording(dto.getRecording());
         repository.save(schedule);
         return 1;
     }

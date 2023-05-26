@@ -12,6 +12,7 @@ public interface QuestionService {
     AnswerDto createAnswer(Long questionId, AnswerDto answerDTO);
     AnswerDto updateAnswer(Long questionId, AnswerDto answerDTO);
     void deleteAnswer(Long questionId);
+    void deleteQuestion(Long id);
 }
 
 

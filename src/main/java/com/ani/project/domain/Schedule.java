@@ -38,6 +38,8 @@ public class Schedule {
     private LocalTime time;
     @Column(name="link")
     private String link;
+    @Column(name="recording")
+    private String recording;
 
 }
 

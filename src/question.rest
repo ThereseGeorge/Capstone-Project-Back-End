@@ -3,12 +3,12 @@ POST http://localhost:8080/questions/ HTTP/1.1
 content-type: application/json
 
 {
-"id" : 4, "studentName" : "ghgf", "question" : "vgijgmailcom"
+"id" : 4, "studentName" : "gtjyjy", "question" : "vgijgmailcom"
 }
 
 
 ### Get Question by Id
-GET http://localhost:8080/questions/2
+GET http://localhost:8080/questions/110
 
 
 ### Get all Questions
@@ -16,7 +16,7 @@ GET  http://localhost:8080/questions HTTP/1.1
 
 
 ### Create New Answer
-POST http://localhost:8080/questions/answer/2
+POST http://localhost:8080/questions/answer/110
 content-type: application/json
 
 {
@@ -35,9 +35,13 @@ content-type: application/json
 
 
 
+### Delete Answer By Id 
+DELETE http://localhost:8080/questions/answer/110
+
+
 ### Delete Question By Id 
-DELETE http://localhost:8080/questions/answer/4
+DELETE http://localhost:8080/questions/110
 
-
+http://localhost:8080/questions/{id}
 cd C:\Users\HP\Desktop\Capstone-Project-Back-End\project-back-end
 

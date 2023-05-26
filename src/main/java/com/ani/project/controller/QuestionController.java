@@ -10,6 +10,7 @@ import com.ani.project.dto.AnswerDto;
 import com.ani.project.dto.QuestionDto;
 import com.ani.project.service.QuestionService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/questions")
 public class QuestionController {
@@ -19,6 +20,7 @@ public class QuestionController {
         this.questionService = questionService;
     }
 
+    @CrossOrigin
     @PostMapping
     public ResponseEntity<QuestionDto> createQuestion(@RequestBody QuestionDto questionDTO) {
         QuestionDto createdQuestion = questionService.createQuestion(questionDTO);
@@ -37,6 +39,7 @@ public class QuestionController {
         return ResponseEntity.ok(questions);
     }
 
+    @CrossOrigin
     @PostMapping("/answer/{id}")
     public ResponseEntity<AnswerDto> createAnswer(@PathVariable("id") Long questionId, @RequestBody AnswerDto answerDTO) {
         AnswerDto createdAnswer = questionService.createAnswer(questionId, answerDTO);
@@ -45,6 +48,7 @@ public class QuestionController {
 
     
 
+    @CrossOrigin
     @PutMapping("/answer/{id}")
     public ResponseEntity<AnswerDto> updateAnswer(@PathVariable("id") Long questionId, @RequestBody AnswerDto answerDTO) {
         AnswerDto updatedAnswer = questionService.updateAnswer(questionId, answerDTO);
@@ -54,6 +58,12 @@ public class QuestionController {
     @DeleteMapping("/answer/{id}")
     public ResponseEntity<Void> deleteAnswer(@PathVariable("id") Long questionId) {
         questionService.deleteAnswer(questionId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteQuestion(@PathVariable Long id) {
+        questionService.deleteQuestion(id);
         return ResponseEntity.noContent().build();
     }
 }

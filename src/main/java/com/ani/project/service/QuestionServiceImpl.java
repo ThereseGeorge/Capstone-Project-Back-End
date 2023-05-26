@@ -95,4 +95,12 @@ public class QuestionServiceImpl implements QuestionService {
         question.setAnswer(null);
         questionRepository.save(question);
     }
+    
+    @Override
+    public void deleteQuestion(Long id) {
+        Question question = questionRepository.findById(id)
+                .orElseThrow(() -> new QuestionNotFoundException("Question not found with id: " + id));
+        questionRepository.delete(question);
+    }
 }
+

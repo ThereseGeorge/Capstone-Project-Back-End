@@ -8,7 +8,7 @@ content-type: application/json
 
 
 ### Get Question by Id
-GET http://localhost:8080/questions/110
+GET http://localhost:8080/questions/115
 
 
 ### Get all Questions
@@ -16,11 +16,11 @@ GET  http://localhost:8080/questions HTTP/1.1
 
 
 ### Create New Answer
-POST http://localhost:8080/questions/answer/110
+POST http://localhost:8080/questions/answer/115
 content-type: application/json
 
 {
-   "answer":   "asdfg"
+   "answer":   "i am fine"
 }
 
 

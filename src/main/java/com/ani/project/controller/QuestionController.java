@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.ani.project.dto.AnswerDto;
+import com.ani.project.dto.AppResponse;
 import com.ani.project.dto.QuestionDto;
 import com.ani.project.service.QuestionService;
 
@@ -33,11 +34,28 @@ public class QuestionController {
         return ResponseEntity.ok(question);
     }
 
+    // @GetMapping
+    // public ResponseEntity<List<QuestionDto>> getAllQuestions() {
+    //     List<QuestionDto> questions = questionService.getAllQuestions();
+    //     return ResponseEntity.ok(questions);
+    // }
+
     @GetMapping
-    public ResponseEntity<List<QuestionDto>> getAllQuestions() {
+    public ResponseEntity<AppResponse<List<QuestionDto>>> getAllQuestions() {
         List<QuestionDto> questions = questionService.getAllQuestions();
-        return ResponseEntity.ok(questions);
+        AppResponse<List<QuestionDto>> response = AppResponse.<List<QuestionDto>>builder()
+        .sts("success")
+        .msg("All Question and answers")
+        .bd(questions).build();
+        return ResponseEntity.status(200).body(response);
     }
+
+    // @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+    // public ResponseEntity<AppResponse<List<CourseDto>>> allCourses(){
+    //     List<CourseDto> courses = service.all();
+    //     AppResponse<List<CourseDto>> response = AppResponse.<List<CourseDto>>builder().sts("success").msg("All Courses").bd(courses).build();
+    //     return ResponseEntity.status(200).body(response);
+    // }
 
     @CrossOrigin
     @PostMapping("/answer/{id}")
